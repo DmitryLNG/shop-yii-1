@@ -31,6 +31,7 @@ class CategoryController extends AppController {
         $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 3]);
         $products = $query->offset($pages->offset)->limit($pages->limit)->all();
         $category = Category::findOne($id);
+        
         return $this->render('products', compact('products','pages','category'));
     }
         

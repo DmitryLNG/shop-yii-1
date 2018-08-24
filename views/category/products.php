@@ -69,11 +69,16 @@ use yii\widgets\LinkPager;
 					 <a href="<?= Url::toRoute('single')?>/<?= $product->id ?>"><img src="/images/prod/<?= $product->img ?>" alt="" /></a>
 					 <h2><?= $product->name ?> </h2>
 					 <p><?= $product->description ?></p>
-					 <p><span class="strike"><?= $product->price ?> руб.</span><span class="price"><?= $product->price ?> руб.</span></p>
-					  <div class="button"><span><img src="images/cart.jpg" alt="" /><a href="<?= Url::toRoute('single')?>/<?= $product->id ?>" class="cart-button">В корзину</a></span> </div>
+                                         <p><span class="strike"><?= $product->price ?> руб.</span><span class="price"><?= $product->price ?> руб.</span></p>
+					  <div class="button add-to-cart" data-id="<?= $product->id ?>"><span><img src="images/cart.jpg" alt="" /><a href="<?= Url::toRoute('single')?>/<?= $product->id ?>" class="cart-button">В корзину</a></span> </div>
 				     <div class="button"><span><a href="<?= Url::toRoute('single')?>/<?= $product->id ?>" class="details">Детали</a></span></div>
 				</div>
                     <?php endforeach; ?>
+                    <script> $('.add-to-cart').on('click', function(e) {
+                        e.preventDefault();
+                        var id = $(this).data('id');
+                        alert('Ku-ku!!!-'+id); }); 
+                    </script>
                     <div class="clearfix"></div>
 		</div>
         <?php else: ?>
